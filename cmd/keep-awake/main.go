@@ -27,7 +27,7 @@ func completed_successfully(err error) bool {
 }
 
 func Keep_awake() error {
-	if _, _, err := setThreadExecStateProc.Call(uintptr(EsSystemRequired)); err != nil && !completed_successfully(err) {
+	if _, _, err := setThreadExecStateProc.Call(uintptr(EsSystemRequired | EsContinuous)); err != nil && !completed_successfully(err) {
 		return err
 	}
 	return nil
